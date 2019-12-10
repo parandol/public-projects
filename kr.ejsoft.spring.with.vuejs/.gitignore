@@ -32,9 +32,12 @@ build/
 
 
 ### Vue ###
+.mvn
 src/front/.DS_Store
 src/front/node_modules
 src/front/dist
+src/front/target
+
 
 # local env files
 src/front/.env.local
