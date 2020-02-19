@@ -41,8 +41,6 @@ public class Application {
 			if(port <= 0) port = listen;
 			
 			if(host != null && !"".equals(host.trim()) && listen > 0) {
-//				String host = "nprotect-rds.crxt9es18xvf.ap-northeast-2.rds.amazonaws.com";
-//				int port = 3306;
 				new SocketServer(listen, host, port).start();
 			}
 		}
