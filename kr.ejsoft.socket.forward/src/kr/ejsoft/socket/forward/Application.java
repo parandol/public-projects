@@ -14,14 +14,15 @@ public class Application {
 		}
 		
 		Properties prop = new Properties();
+		File file = null;
 		FileInputStream stream = null;
 		try {
-			File file = new File(propertiesFile);
-			System.out.println("Properties File Path : " + file.getAbsolutePath());
+			file = new File(propertiesFile);
 			stream = new FileInputStream(file);
 			prop.load(stream);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("File Not Found. " + ((file != null) ? file.getAbsolutePath() : ""));
+			// e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -31,9 +32,12 @@ public class Application {
 		String keynames = prop.getProperty("forward.keys", "");
 		String[] keys = keynames.split(",");
 		for(String key : keys) {
-			String host = prop.getProperty("forward." + key + ".host", "").trim();
-			String listen1 = prop.getProperty("forward." + key + ".listen", "0");
-			String port1 = prop.getProperty("forward." + key + ".port", "0");
+			if(key == null || "".equals(key.trim())) continue;
+
+			String host = prop.getProperty("forward." + key.trim() + ".host", "").trim();
+			String listen1 = prop.getProperty("forward." + key.trim() + ".listen", "0");
+			String port1 = prop.getProperty("forward." + key.trim() + ".port", "0");
+			
 			int listen = -1;
 			int port = -1;
 			try { listen = Integer.parseInt(listen1); } catch(Exception e) { };

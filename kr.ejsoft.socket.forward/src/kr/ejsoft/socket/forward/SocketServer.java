@@ -29,7 +29,11 @@ public class SocketServer {
 				Socket clientSocket = serverSocket.accept();
 				
 				// String clientIp = clientSocket.getInetAddress().getHostAddress();
-				// Authorization by Client Ip
+				// IP를 통해 권한을 부여하려면 여기에 코드를 추가하십시오.
+//				if(denied) {
+//					try { clientSocket.close(); } catch (Exception e) { }
+//					break;
+//				}
 				
 				ClientThread clientThread = new ClientThread(clientSocket, this.host, this.port);
 				clientThread.start();
