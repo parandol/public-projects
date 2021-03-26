@@ -1,0 +1,14 @@
+[Unit]
+Description=Tunnel Server
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/tunnel.pid
+ExecStart=/root/tunnel.server/tunnel.sh start
+ExecStop=/root/tunnel.server/tunnel.sh stop
+ExecRestart=/root/tunnel.server/tunnel.sh restart
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
