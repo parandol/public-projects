@@ -3,6 +3,7 @@
 */dist
 */.settings
 */target
+*/bin
 
 # local env files
 .env.local
